@@ -1,0 +1,132 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ Copyright 2014 Amazon.com,
+ Inc. or its affiliates. All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the
+ "License"). You may not use this file except in compliance
+ with the License. A copy of the License is located at
+
+ http://aws.amazon.com/apache2.0/
+
+ or in the "license" file accompanying this file. This file is
+ distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ CONDITIONS OF ANY KIND, either express or implied. See the
+ License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.amazon.mas.cpt.ads.AmazonMobileAdsPlugin"
+    version="1.0.0">
+    <name>AmazonMobileAds</name>
+
+    <js-module src="www/AmazonMobileAds.js" name="AmazonMobileAds">
+            <clobbers target="window.AmazonMobileAds" />
+    </js-module>
+
+    <!-- amazon-fireos -->
+    <platform name="amazon-fireos">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AmazonMobileAdsPlugin" >
+                <param name="android-package" value="com.amazon.mas.cpt.ads.AmazonMobileAdsPlugin"/>
+            </feature>
+        </config-file>
+          
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.amazon.device.ads.AdActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+        	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+                    
+        </config-file>
+    
+        <source-file src="src/amazon/AmazonMobileAdsPlugin.java" target-dir="src/com/amazon/mas/cpt/ads" />
+        <source-file src="src/amazon/AmazonMobileAdsJavaControllerImpl.java" target-dir="src/com/amazon/mas/cpt/ads" />
+        	<source-file src="libs/AmazonCptPluginsUtils-1.0.jar" target-dir="libs" />
+        	<source-file src="libs/AmazonMobileAdsAndroidSDK3P-1.1.jar" target-dir="libs" />
+        	<source-file src="libs/AmazonMobileAdsJavaService-1.0.jar" target-dir="libs" />
+        	<source-file src="libs/gson-2.2.4.jar" target-dir="libs" />
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AmazonMobileAdsPlugin" >
+                <param name="android-package" value="com.amazon.mas.cpt.ads.AmazonMobileAdsPlugin"/>
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.amazon.device.ads.AdActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+        	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+                    
+        </config-file>
+    
+        <source-file src="src/amazon/AmazonMobileAdsPlugin.java" target-dir="src/com/amazon/mas/cpt/ads" />
+        <source-file src="src/android/AmazonMobileAdsJavaControllerImpl.java" target-dir="src/com/amazon/mas/cpt/ads" />
+        	<source-file src="libs/AmazonCptPluginsUtils-1.0.jar" target-dir="libs" />
+        	<source-file src="libs/AmazonMobileAdsAndroidSDK3P-1.1.jar" target-dir="libs" />
+        	<source-file src="libs/AmazonMobileAdsJavaService-1.0.jar" target-dir="libs" />
+        	<source-file src="libs/gson-2.2.4.jar" target-dir="libs" />
+    </platform>
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="AmazonMobileAdsPlugin">
+                <param name="ios-package" value="CDVAmazonMobileAds"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVAmazonMobileAds.h" />
+        <source-file src="src/ios/CDVAmazonMobileAds.m" />
+        <header-file src="src/ios/AMAZONAd.h" />
+    	<header-file src="src/ios/AMAZONAdPair.h" />
+    	<header-file src="src/ios/AMAZONAdPosition.h" />
+    	<header-file src="src/ios/AMAZONAdShown.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAds.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAdsImpl.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAdsImplStub.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAdsJsonFromObject.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAdsObjectFromJson.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAdsObjectiveCController.h" />
+    	<header-file src="src/ios/AMAZONAmazonMobileAdsObjectiveCControllerImpl.h" />
+    	<header-file src="src/ios/AMAZONApplicationKey.h" />
+    	<header-file src="src/ios/AMAZONEnums.h" />
+    	<header-file src="src/ios/AMAZONIsEqual.h" />
+    	<header-file src="src/ios/AMAZONIsReady.h" />
+    	<header-file src="src/ios/AMAZONLoadingStarted.h" />
+    	<header-file src="src/ios/AMAZONPlacement.h" />
+    	<header-file src="src/ios/AMAZONShouldEnable.h" />
+    	<source-file src="src/ios/AMAZONAd.m" />
+    	<source-file src="src/ios/AMAZONAdPair.m" />
+    	<source-file src="src/ios/AMAZONAdPosition.m" />
+    	<source-file src="src/ios/AMAZONAdShown.m" />
+    	<source-file src="src/ios/AMAZONAmazonMobileAdsImpl.m" />
+    	<source-file src="src/ios/AMAZONAmazonMobileAdsImplStub.m" />
+    	<source-file src="src/ios/AMAZONAmazonMobileAdsJsonFromObject.m" />
+    	<source-file src="src/ios/AMAZONAmazonMobileAdsObjectFromJson.m" />
+    	<source-file src="src/ios/AMAZONAmazonMobileAdsObjectiveCControllerImpl.m" />
+    	<source-file src="src/ios/AMAZONApplicationKey.m" />
+    	<source-file src="src/ios/AMAZONEnums.m" />
+    	<source-file src="src/ios/AMAZONIsEqual.m" />
+    	<source-file src="src/ios/AMAZONIsReady.m" />
+    	<source-file src="src/ios/AMAZONLoadingStarted.m" />
+    	<source-file src="src/ios/AMAZONPlacement.m" />
+    	<source-file src="src/ios/AMAZONShouldEnable.m" />
+
+        <framework src="src/ios/AmazonAd.framework" custom="true" />
+        <framework src="AdSupport.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="EventKit.framework" />
+        <framework src="EventKitUI.framework" />
+        <framework src="MediaPlayer.framework" />
+        <framework src="StoreKit.framework" />
+        <framework src="SystemConfiguration.framework" />
+    </platform>
+</plugin>
+
